@@ -45,4 +45,4 @@ $3T(9T(n/27) + cn^5/243) + n^5 \Rightarrow 27T(n/27) + (1 + 3c(1/243))n^5$ and a
 $3^iT(n/3^i) + cn^5$ which is awfully familiar, I was able to find my $i$ fairly easily: $log_3n$
 
 $nT(n/n) + cn^5 \Rightarrow n + n^5$ and we can drop $c$ because it won't matter in asymptotic complexity. 
-And when we solve a recurrence relation we find $T(n) \in \Theta(n)$ where $\Theta(n + n^5)$, but $\Theta$ is defined as both $O$ and $\Omega$ so we can also say $T(n) \in O(n^5)$ and drop the other $n$ because it also doesn't matter in asymptotic complexity.
+And when we solve a recurrence relation we find $T(n) \in \Theta(n)$ where $\Theta(n + n^5)$, but $\Theta$ is defined as both $O$ and $\Omega$ so we can also say $T(n) \in O(n^5)$ and drop the other $n$ because it also doesn't matter in asymptotic complexity because $n^5$ will dominate.
