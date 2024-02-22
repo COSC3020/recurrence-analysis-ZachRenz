@@ -36,13 +36,11 @@ might help with the notation for mathematical expressions.
 With three for loops, two running through $n*n$ and one only running through one $n$, we have $n^5$, along with three mystery calls with an arguement of $n / 3$. 
 So the recurrence relationship is $1$ if $n <= 1$ and $mystery(n-3) + n^5$ if $n>1$ and we can start solving. 
 
-$T(n/3) = 3T(n/3/3) + (n/3)^5 \Rightarrow 3T(n/9) + n^5/243$ and then we can insert that into $3T(n/3) + n^5$
-$3(3T(n/9) + n^5/243) + n^5 \Rightarrow 9T(n/9) + (1 + 3(1/243))n^5$ But we can let $(1 + 3(1/243))$ be a constant called $c$
-$9T(n/3) + cn^5 = 9T(n/3/9) + (n/3)^5 \Rightarrow 9T(n/27) + cn^5/243$ and then we can insert that into $3T(n/3) + n^5$
+$T(n/3) = 3T(n/3/3) + (n/3)^5 \Rightarrow 3T(n/9) + n^5/3^5$ and then we can insert that into $3T(n/3) + n^5$
+$3(3T(n/9) + n^5/3^5) + n^5 \Rightarrow 9T(n/9) + n^5/3^4 + n^5$ 
+Then we can do another iteration and get to $27T(n/27) + n^5/3^5 + n^5/3^4 + n^5$ and we have a pattern!
 
-$3T(9T(n/27) + cn^5/243) + n^5 \Rightarrow 27T(n/27) + (1 + 3c(1/243))n^5$ and again we can all that mess of numbers in front of $n^5$ $c$ and we have a pattern! 
+$3^iT(n/3^i) + \displaystyle\sum_{j=0}^i n^5/3^{i+2} + n^5$ which is awfully familiar, I was able to find my $i$ fairly easily: $log_3n$
 
-$3^iT(n/3^i) + cn^5$ which is awfully familiar, I was able to find my $i$ fairly easily: $log_3n$
-
-$nT(n/n) + cn^5 \Rightarrow n + n^5$ and we can drop $c$ because it won't matter in asymptotic complexity. 
-And when we solve a recurrence relation we find $T(n) \in \Theta(n)$ where $\Theta(n + n^5)$, but $\Theta$ is defined as both $O$ and $\Omega$ so we can also say $T(n) \in O(n^5)$ and drop the other $n$ because it also doesn't matter in asymptotic complexity because $n^5$ will dominate.
+$nT(n/n) + \displaystyle\sum_{j=0}^{\log_{3} n} n^5/(n+2) + n^5 \Rightarrow n + \displaystyle\sum_{j=0}^{\log_{3} n} n^5/(n+2) + n^5$ and only $n^5$ will dominate.
+And when we solve a recurrence relation we find $T(n) \in \Theta(n)$ where $\Theta(n^5)$, but $\Theta$ is defined as both $O$ and $\Omega$ so we can also say $T(n) \in O(n^5)$.
